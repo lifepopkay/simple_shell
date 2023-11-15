@@ -1,19 +1,20 @@
-#include "all_func.h"
+#include "simple.h"
 
-/*
- * main - simple shell function
+/**
+ * main - function that checks if our shell is called
  *
- * Return: 0
+ * Return: 0 on success
  */
-
 int main(void)
 {
-	char string[200];
-
-	while (1)
+	if (isatty(STDIN_FILENO) != 1)
 	{
-		alx_prompt();
-		read_command(string, sizeof(string));
-		take_command(string);
+		shell_no_interactive();
+
 	}
+	else
+	{
+		shell_interactive();
+	}
+	return (0);
 }
